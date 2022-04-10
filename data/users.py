@@ -11,6 +11,7 @@ class User(SqlAlchemyBase):
     __tablename__ = 'users'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    vk_id = sqlalchemy.Column(sqlalchemy.String)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     room = sqlalchemy.Column(sqlalchemy.String)
     moves = sqlalchemy.Column(sqlalchemy.String)
