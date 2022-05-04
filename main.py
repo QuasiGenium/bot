@@ -76,6 +76,13 @@ def is_it_new_user(i, db_sess):
     return user
 
 
+def myself(update, context):
+    db_sess = db_session.create_session()
+    chat = update.effective_chat
+    user = is_it_new_user(str(chat.id), db_sess)
+    update.message.reply_text(f"Вы первый раз написали мне {user.created_date}")
+
+
 def turn(update, context):
     db_sess = db_session.create_session()
     chat = update.effective_chat
@@ -177,6 +184,7 @@ def help(update, context):
         " Если не ввести ключ вы не можете ни к кому присоединиться. Максимальное число игроков в комнате - 2.\n"
         "/exit_room - команда для выхода из комнаты. Внимание при выходе из комнаты ход игры теряется."
         "Когда ваш оппонет выходит из комнаты, вы тоже автоматически из неё выходите.\n"
+        "/myself - команда для вывода момента, когда вы в впервый раз заговорили с ботом\n"
         "\n"
         "Как только вы вошли в комнату, вам случайным образом назначается цвет. (Первые ходят белые)\n"
         "Для того чтобы походить введите номер клетки фигуры,"
@@ -341,6 +349,7 @@ def main():
     dp.add_handler(CommandHandler("promotion_to_queen", p_to_fer))
     dp.add_handler(CommandHandler("promotion_to_knight", p_to_hor))
     dp.add_handler(CommandHandler("promotion_to_rook", p_to_lad))
+    dp.add_handler(CommandHandler("myself", myself))
     dp.add_handler(CommandHandler("roki", roki))
     text_handler = MessageHandler(Filters.text, turn)
     dp.add_handler(text_handler)
