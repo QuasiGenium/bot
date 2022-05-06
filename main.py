@@ -1,4 +1,4 @@
-from telegram.ext import Updater, MessageHandler, Filters  # итог: 708 строк
+from telegram.ext import Updater, MessageHandler, Filters
 from telegram.ext import CommandHandler
 import telegram
 from flask import Flask
@@ -100,7 +100,7 @@ def turn(update, context):
                 update.message.reply_text("Вы не можете ходить. Сейчас ход другого игрока.")
 
         else:
-            if len(user.moves.split(';')) % 2 != 0 and user.moves:
+            if len(str(user.moves).split(';')) % 2 != 0 and user.moves:
                 flag = False
                 update.message.reply_text("Вы не можете ходить. Сейчас ход другого игрока.")
         if flag:

@@ -67,29 +67,3 @@ def make_picture(f, other=''):
                         continue
                 if h:
                     print('я пытался ', h, 'раз')
-
-
-
-'''
-board1 = Image.open('pic/board.png')
-w = Image.open('pic/b_hor.png')
-mask_im = Image.open('pic/b_hor_mask.png')
-board = board1.copy()
-board.paste(w, (23 + 60, 2), mask_im)
-board.save('pic/board1.png', quality=95)
-'''
-'''
-fs = ['hor', 'ele', 'fer', 'king', 'lad', 'pes']
-cl = ['w', 'b']
-for a in cl:
-    for b in fs:
-        w = Image.open(f'pic/{a}_{b}.png')
-
-        p = w.load()
-        x, y = w.size
-        for i in range(x):
-            for j in range(y):
-                if p[i, j][3] != 0:
-                    p[i, j] = (255, 255, 255, 255)
-                    w.save(f'pic/{a}_{b}_mask.png')
-'''
