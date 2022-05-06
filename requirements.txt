@@ -1,0 +1,4 @@
+pillow
+python-telegram-bot
+sqlalchemy
+flask-restful
